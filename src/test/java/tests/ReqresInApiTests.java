@@ -18,7 +18,6 @@ public class ReqresInApiTests {
                 .baseUri("https://reqres.in/")
                 .filter(new AllureRestAssured());
 
-
     @Test
     @DisplayName("Delete user")
     void shouldDeleteUser() {
@@ -85,8 +84,8 @@ public class ReqresInApiTests {
     @Test
     @DisplayName("Check api returns all resources")
     void shouldReturnListOfResources() {
-        Resource resource = requestSpec.
-                when()
+        Resource resource = requestSpec
+                .when()
                     .get("api/unknown")
                 .then()
                     .statusCode(200)
@@ -100,6 +99,4 @@ public class ReqresInApiTests {
         assertThat(firstResource.getName(), is("cerulean"));
         assertThat(lastResource.getName(), is("blue turquoise"));
     }
-
-
 }
