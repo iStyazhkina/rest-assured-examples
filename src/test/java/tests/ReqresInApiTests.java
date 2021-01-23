@@ -41,7 +41,7 @@ public class ReqresInApiTests {
                 .when()
                     .post("api/users")
                 .then()
-                .statusCode(201)
+                    .statusCode(201)
                     .body("id", notNullValue())
                     .body("createdAt", notNullValue());
     }
@@ -87,11 +87,11 @@ public class ReqresInApiTests {
     void shouldReturnListOfResources() {
         Resource resource = requestSpec.
                 when()
-                .get("api/unknown")
+                    .get("api/unknown")
                 .then()
-                .statusCode(200)
-                .extract()
-                .as(Resource.class);
+                    .statusCode(200)
+                    .extract()
+                    .as(Resource.class);
 
         Resource.Data firstResource = resource.getData().get(0);
         Resource.Data lastResource = resource.getData().get(5);
