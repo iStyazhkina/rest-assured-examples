@@ -37,7 +37,7 @@ public class ReqresInApiTests {
     @DisplayName("Create user")
     void shouldCreateUser() {
         requestSpec
-                    .body(readJsonFromFile("src/test/resources/newUser.json"))
+                    .body(readFromFile("src/test/resources/newUser.json"))
                 .when()
                     .post("api/users")
                 .then()
@@ -50,7 +50,7 @@ public class ReqresInApiTests {
     @DisplayName("Update user")
     void shouldUpdateUser() {
         requestSpec
-                    .body(readJsonFromFile("src/test/resources/newUser.json"))
+                    .body(readFromFile("src/test/resources/newUser.json"))
                 .when()
                     .put("api/users/2")
                 .then()
