@@ -7,10 +7,8 @@ import java.nio.charset.StandardCharsets;
 
 public class TestUtils {
 
-    public static String getStringFromJsonFile(String path) {
-        FileInputStream fis;
-        try {
-            fis = new FileInputStream(new File(path));
+    public static String readJsonFromFile(String path) {
+        try (FileInputStream fis = new FileInputStream(new File(path))) {
             return IOUtils.toString(fis, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();

@@ -3,6 +3,7 @@ package tests;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.specification.RequestSpecification;
 import rest.Resource;
+import rest.ResourcesData;
 import rest.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,7 @@ public class ReqresInApiTests {
     @DisplayName("Create user")
     void shouldCreateUser() {
         requestSpec
-                    .body(getStringFromJsonFile("src/test/resources/newUser.json"))
+                    .body(readJsonFromFile("src/test/resources/newUser.json"))
                 .when()
                     .post("api/users")
                 .then()
@@ -49,7 +50,7 @@ public class ReqresInApiTests {
     @DisplayName("Update user")
     void shouldUpdateUser() {
         requestSpec
-                    .body(getStringFromJsonFile("src/test/resources/newUser.json"))
+                    .body(readJsonFromFile("src/test/resources/newUser.json"))
                 .when()
                     .put("api/users/2")
                 .then()
@@ -92,8 +93,8 @@ public class ReqresInApiTests {
                     .extract()
                     .as(Resource.class);
 
-        Resource.Data firstResource = resource.getData().get(0);
-        Resource.Data lastResource = resource.getData().get(5);
+        ResourcesData firstResource = resource.getData().get(0);
+        ResourcesData lastResource = resource.getData().get(5);
 
         assertThat(resource.getData().size(), is(6));
         assertThat(firstResource.getName(), is("cerulean"));
