@@ -1,11 +1,12 @@
 package tests;
 
-import io.qameta.allure.restassured.AllureRestAssured;
+import filter.CustomFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static filter.CustomFilter.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.Is.is;
 import static utils.TestUtils.*;
@@ -15,7 +16,7 @@ public class DemoWebShopTests {
 
     private static RequestSpecification requestSpec = given()
             .baseUri("http://demowebshop.tricentis.com/")
-            .filter(new AllureRestAssured());
+            .filter(CUSTOM_ALLURE_REST);
 
     @Test
     @DisplayName("Add item to wish list")

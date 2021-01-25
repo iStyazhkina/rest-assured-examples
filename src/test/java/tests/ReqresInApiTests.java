@@ -1,6 +1,6 @@
 package tests;
 
-import io.qameta.allure.restassured.AllureRestAssured;
+import filter.CustomFilter;
 import io.restassured.specification.RequestSpecification;
 import rest.Resource;
 import rest.ResourcesData;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static filter.CustomFilter.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -18,9 +19,9 @@ import static utils.TestUtils.*;
 
 public class ReqresInApiTests {
 
-    private static RequestSpecification requestSpec = given()
+    private RequestSpecification requestSpec = given()
                 .baseUri("https://reqres.in/api/")
-                .filter(new AllureRestAssured());
+                .filter(CUSTOM_ALLURE_REST);
 
     private static final int USER_ID = 5;
 
